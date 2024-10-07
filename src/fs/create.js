@@ -3,9 +3,11 @@ import path from "path";
 
 import * as url from "url";
 
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+import { SOURCES_FOLDER_NAME } from "../constants.js";
 
-const SOURCES_FOLDER_NAME = "files";
+import { EEXIST_ERROR_CODE, FsOperaionError, UnexpectedError } from "../custom-errors.js";
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const BASE_FILE_NAME = "fresh";
 const FILE_EXTENSION = ".txt";
@@ -19,25 +21,6 @@ const getFilePath = (fileName = '', folderName = SOURCES_FOLDER_NAME) => {
 const filePath = getFilePath(FILE_NAME);
 
 const FILE_CONTENT = "I am fresh and young";
-
-const EEXIST_ERROR_CODE = 'EEXIST'
-
-class FsOperaionError extends Error {
-    constructor(originalError){
-        super("FS operation failed")
-        this.name = "FsOperaionError"
-        this.originalError = originalError
-    }
-}
-
-class UnexpectedError extends Error {
-    constructor(originalError){
-        super("Unexpected error occurred")
-        this.name = "UnexpectedError"
-        this.originalError = originalError
-    }
-}
-
 
 const create = async () => {
 
