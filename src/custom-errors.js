@@ -24,3 +24,5 @@ export class RelativePathError extends Error  {
 
 
 export const EEXIST_ERROR_CODE = 'EEXIST'
+
+export const ENOENT_ERROR_CODE = 'ENOENT'
